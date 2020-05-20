@@ -9,6 +9,7 @@ const lostGames = document.querySelector('#lost');
 const incorrectLetterGroup = document.querySelector('#incorrect-letter-group');
 const livesNumberSpan = document.querySelector('#lives-number');
 const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+const select = document.querySelector('#length');
 
 let wonGamesCount = 0;
 let lostGamesCount = 0;
@@ -124,6 +125,7 @@ submitButton.disabled = true;
 
 
 startButton.addEventListener('click', () => {
+    select.disabled = true;
     chosenWord.style.fontSize = '80px';
     const wordLength = document.querySelector('#length').value;
     const gameArray = defineGameArray(wordLength); //defining array for current round
@@ -162,6 +164,7 @@ submitButton.addEventListener('click', () => {
                   wonGamesCount += 1;
                   wonGames.innerText = wonGamesCount;
                   resultMessage.innerText = 'Game won! Press New Game button to start next round.';
+                  select.disabled = false;
               }
           } else  {
               livesNumber = +livesNumberSpan.innerText - 1;
@@ -173,9 +176,11 @@ submitButton.addEventListener('click', () => {
                   incorrectLetterGroup.innerText = errorLetterArray.join(' ');
               } 
               if (livesNumber === 0) {
-                    incorrectLetterGroup.innerText = errorLetterArray.join(' ');
+                  incorrectLetterGroup.innerText = errorLetterArray.join(' ');
                   resultMessage.innerText = 'Game Over. You have lost. Start the next round.'
+                  select.disabled = false;
                   resultMessage.style.color = 'red';
+                  chosenWord.innerText = word;
                   lostGamesCount += 1;
                   lostGames.innerText = lostGamesCount;
                   letterInput.disabled = true;
