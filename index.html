@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess a Word</title>
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Word Guess Game</h1>
+    </header>
+
+    <main id="main-content">
+        <section id="user-lives">
+            <p>Lives: <span id="lives-number">5</span></p>
+        </section>
+
+        <section id="round">
+            <p>Round <span id="round-number">1</span></p>
+        </section>
+
+        <section id="stats">
+            <p>Games won: <span id="won">0</span></p>
+            <p>Games lost: <span id="lost">0</span></p>
+        </section>
+
+        <section id="chosen-word">
+            Press 'New Game' button to start!
+        </section>
+
+        <section id="result-message">
+
+        </section>
+        <section id="player-interaction">
+            <input id="letter-input" type="text" name ="letter-input" maxlength="1">
+            <button id="submit" type="submit">Submit</button>
+            <button id="start">New Game</button>
+            <div id="word-length">
+                <p>Choose word length:</p>
+                <select name="length" id="length">
+                    <option value="random">random</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+        </section>
+        <section id="incorrect-letters">
+            <h2>Incorrect Letters:</h2>
+            <div id="incorrect-letter-group">
+            
+            </div>
+        </section>
+    </main>
+    <script src="assets/js/words.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

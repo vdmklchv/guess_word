@@ -1,0 +1,131 @@
+/* general */
+
+*   {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Oxygen, sans-serif;
+}
+
+button  {
+    background-color: #442E6B;
+    border: none;
+    min-width: 100px;
+    border-radius: 5px;
+    min-height: 40px;
+    font-size: 25px;
+    padding: 20px 10px;
+    text-align: center;
+    color: white;
+}
+
+button:hover {
+    background-color: rgb(103, 68, 163);
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: gray;
+    cursor: default;
+}
+
+
+
+/* header */
+header  h1 {
+    font-weight: bold;
+    padding: 40px 0;
+    font-size: 40px;
+    text-align: center;
+    background-color: darkolivegreen;
+    color: white;
+}
+
+/* main */
+
+#main-content   {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 20px;
+}
+
+#user-lives, #round {
+    width: 50%;
+    display: inline-block;
+    text-align: left;
+    font-size: 22px;
+}
+
+#round  {
+    text-align: right;
+}
+
+#stats  {
+    width: 100%;
+    display: block;
+    font-size: 20px;
+    font-style: italic;
+    padding: 20px 0;
+}
+
+#chosen-word    {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    width: 100%;
+    border: 3px gray solid;
+    box-shadow: 3px 3px 10px gray;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+#result-message {
+    min-height: 80px;
+    font-size: 40px;
+    text-align: center;
+    width: 100%;
+}
+
+#letter-input   {
+    border: 1px gray solid;
+    min-width: 100px;
+    border-radius: 5px;
+    min-height: 40px;
+    font-size: 25px;
+    padding: 20px 10px;
+}
+
+#incorrect-letters  {
+    display: flex;
+    margin-left: 100px;
+    font-size: 25px;
+    flex-grow: 1;
+}
+
+#word-length    {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    font-size: 25px;
+}
+
+#word-length select {
+    font-size: 25px;
+}
+
+
+
+#incorrect-letter-group {
+    flex-grow: 3;
+    font-size: 50px;
+    margin-left: 100px;
+    border: 5px solid #442E6B;
+    border-radius: 5px;
+    width: 50%;
+    padding: 10px 10px;
+}
+
