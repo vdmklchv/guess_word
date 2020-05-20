@@ -111,7 +111,7 @@ function checkValidLetter(letter)   {
     }
 
     else if (alphabet.indexOf(letter) === -1) {
-        resultMessage.innerText = 'Input invalid. Please provide corret letter!';
+        resultMessage.innerText = 'Input invalid. Please provide correсt letter!';
         resultMessage.style.color = 'red';
         return false;
     }
