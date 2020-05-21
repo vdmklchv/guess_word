@@ -25,9 +25,10 @@ letterInput.disabled = true;
 /* drawing alphabet on game board */
 function alphabetDraw(array) {
     for (let i of array)    {
-        alphabetSection.innerHTML += `<button class="alphabet-letter" value="${i}">${i}</button>`;
+        alphabetSection.innerHTML += `<button class="alphabet-letter" id="b${i}">${i}</button>`;
     }
 }
+
 
 /* defining game array depending on choice */
 
@@ -141,7 +142,25 @@ function alphabetToggle(array)  {
     }
 }
 
+/* binding keyboard keys to letters */
+
+
+
+window.addEventListener('keyup', (event) => {
+    if (event.keyCode === 13)   {
+        submitButton.click();
+    }
+})
+
 alphabetDraw(alphabet);
+
+window.addEventListener('keyup', (event) => {
+    document.querySelector(`#b${String.fromCharCode(event.keyCode).toLowerCase()}`).click();
+})
+
+
+
+
 /* start new round */
 letterInput.disabled = true;
 submitButton.disabled = true;
@@ -185,6 +204,7 @@ startButton.addEventListener('click', () => {
     resultMessage.innerText = 'Make a guess (letters from a to z):';
     resultMessage.style.color = 'black';
 })
+
 
 submitButton.addEventListener('click', () => {
     const submittedLetter = letterInput.value.toLowerCase(); //storing submitted letter in a variable
