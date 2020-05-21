@@ -11,6 +11,7 @@ const livesNumberSpan = document.querySelector('#lives-number');
 const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 const select = document.querySelector('#length');
 const definition = document.querySelector('#definition');
+const alphabetSection = document.querySelector('#alphabet');
 
 let wonGamesCount = 0;
 let lostGamesCount = 0;
@@ -20,6 +21,13 @@ let word = '';
 let letterarray = [];
 
 letterInput.disabled = true;
+
+/* drawing alphabet on game board */
+function alphabetDraw(array) {
+    for (let i of array)    {
+        alphabetSection.innerHTML += `<button class="alphabet-letter" value="${i}">${i}</button>`;
+    }
+}
 
 /* defining game array depending on choice */
 
@@ -120,12 +128,44 @@ function checkValidLetter(letter)   {
     return true;
 }
 
+/* alphabetLetters toggle */
+function alphabetToggle(array)  {
+    for (let i of array)    {
+        if (i.disabled === true)    {
+            i.disabled = false;
+            i.classList.remove('nohover');
+        } else {
+            i.disabled = true;
+            i.classList.add('nohover');
+        }
+    }
+}
+
+alphabetDraw(alphabet);
 /* start new round */
 letterInput.disabled = true;
 submitButton.disabled = true;
+const alphabetLetters = document.querySelectorAll('.alphabet-letter');
+alphabetToggle(alphabetLetters);
 
+let registerTarget = '';
+
+/* input letter with mouse */
+alphabetSection.addEventListener('click', (event) => {
+    letterInput.value = event.target.innerText;
+    registerTarget = event.target;
+    submitButton.addEventListener('click', () => {
+        registerTarget.disabled = true;
+        registerTarget.classList.add('nohover');
+    })
+})
 
 startButton.addEventListener('click', () => {
+    for (let i of alphabetLetters)  {
+        i.classList.remove('nohover');
+        i.disabled = true;
+    }
+    alphabetToggle(alphabetLetters);
     select.disabled = true;
     chosenWord.style.fontSize = '80px';
     const wordLength = document.querySelector('#length').value;

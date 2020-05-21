@@ -13,16 +13,21 @@ button  {
     min-width: 100px;
     border-radius: 5px;
     min-height: 40px;
-    font-size: 25px;
+    font-size: 20px;
     padding: 20px 10px;
     text-align: center;
     color: white;
 }
 
-button:hover {
+button:hover, .alphabet-letter:hover {
     background-color: rgb(103, 68, 163);
     transition: 0.3s ease;
     cursor: pointer;
+}
+
+.nohover:hover    {
+    background-color: gray;
+    cursor: default;
 }
 
 button:disabled {
@@ -70,21 +75,44 @@ header  h1 {
 }
 
 #chosen-word    {
-    min-height: 200px;
+    min-width: 800px;
+    margin: 0 auto;
+
+    min-height: 110px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 40px;
-    width: 100%;
+    font-size: 30px;
     border: 3px gray solid;
     box-shadow: 3px 3px 10px gray;
     margin-bottom: 20px;
     border-radius: 5px;
 }
 
+#alphabet   {
+    display: flex;
+    justify-content: flex-start;
+    max-width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.alphabet-letter    {
+    min-width: 70px;
+    min-height: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: #442E6B;
+    color: white;
+    text-align: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
 #result-message {
-    min-height: 80px;
-    font-size: 40px;
+    min-height: 50px;
+    font-size: 20px;
     text-align: center;
     width: 100%;
 }
@@ -94,14 +122,14 @@ header  h1 {
     min-width: 100px;
     border-radius: 5px;
     min-height: 40px;
-    font-size: 25px;
+    font-size: 20px;
     padding: 20px 10px;
 }
 
 #incorrect-letters  {
     display: flex;
     margin-left: 100px;
-    font-size: 25px;
+    font-size: 20px;
     flex-grow: 1;
 }
 
@@ -110,18 +138,18 @@ header  h1 {
     width: 100%;
     justify-content: space-evenly;
     margin-top: 20px;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 #word-length select {
-    font-size: 25px;
+    font-size: 20px;
 }
 
 
 
 #incorrect-letter-group {
     flex-grow: 3;
-    font-size: 50px;
+    font-size: 20px;
     margin-left: 100px;
     border: 5px solid #442E6B;
     border-radius: 5px;
