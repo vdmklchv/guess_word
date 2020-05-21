@@ -158,7 +158,11 @@ window.addEventListener('keyup', (event) => {
     document.querySelector(`#b${String.fromCharCode(event.keyCode).toLowerCase()}`).click();
 })
 
-
+window.addEventListener('keyup', (event) => {
+    if (event.keyCode === 32)   {
+        startButton.click();
+    }
+})
 
 
 /* start new round */
