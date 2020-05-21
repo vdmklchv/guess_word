@@ -20,7 +20,17 @@ let round = 0;
 let word = '';
 let letterarray = [];
 
-letterInput.disabled = true;
+/* reveal word definition */
+
+function revealWordDefinition(word) {
+    const fetchPromise = fetch(`https://www.dictionaryapi.com/api/v3/references/sd4/json/${word}?key=ccebcb5b-e2d6-4f47-92af-5c543a12d51c`);
+    fetchPromise.then(response => {
+        return response.json();
+    }).then(item => {
+        definition.innerText = item[0]["shortdef"][0];
+    })
+}
+
 
 /* drawing alphabet on game board */
 function alphabetDraw(array) {
@@ -188,6 +198,7 @@ startButton.addEventListener('click', () => {
         i.classList.remove('nohover');
         i.disabled = true;
     }
+    definition.innerText = '';
     alphabetToggle(alphabetLetters);
     select.disabled = true;
     chosenWord.style.fontSize = '80px';
@@ -229,6 +240,7 @@ submitButton.addEventListener('click', () => {
                   wonGamesCount += 1;
                   wonGames.innerText = wonGamesCount;
                   resultMessage.innerText = 'Game won! Press New Game button to start next round.';
+                  revealWordDefinition(word);
                   select.disabled = false;
               }
           } else  {
@@ -248,6 +260,7 @@ submitButton.addEventListener('click', () => {
               if (livesNumber === 0) {
                   incorrectLetterGroup.innerText = errorLetterArray.join(' ');
                   resultMessage.innerText = 'Game Over. You have lost. Start the next round.'
+                  revealWordDefinition(word);
                   select.disabled = false;
                   resultMessage.style.color = 'red';
                   chosenWord.innerText = word;
