@@ -204,7 +204,7 @@ startButton.addEventListener('click', () => {
         i.classList.remove('nohover');
         i.disabled = true;
     }
-    definition.innerText = '';
+    definition.innerText = 'Definition will appear here after round end.';
     alphabetToggle(alphabetLetters);
     select.disabled = true;
     chosenWord.style.fontSize = '80px';

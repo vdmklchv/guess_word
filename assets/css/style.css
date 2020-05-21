@@ -89,7 +89,7 @@ header  h1 {
 }
 
 #definition {
-    height: 40px;
+    min-height: 40px;
     font-size: 20px;
     text-align: center;
     background-color: darkolivegreen;
