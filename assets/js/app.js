@@ -211,6 +211,11 @@ submitButton.addEventListener('click', () => {
               livesNumber = +livesNumberSpan.innerText - 1;
               livesNumberSpan.innerText = livesNumber;
               errorLetterArray.push(letterInput.value);
+              for (let i of alphabetLetters)    {
+                  if (i.value === letterInput.value)    {
+                      i.disabled = true;
+                  }
+              }
               if (livesNumber > 0) {
                   resultMessage.innerText = 'Sorry. No such letter. Try again:';
                   resultMessage.style.color = 'red';

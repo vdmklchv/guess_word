@@ -13,6 +13,23 @@
     </header>
 
     <main id="main-content">
+        <div id="start-game-block">
+        <button id="start">New Game</button>
+        <div id="word-length">
+            <p>Choose word length:</p>
+            <select name="length" id="length">
+                <option value="random">random</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </div>
+        </div>
+
         <section id="user-lives">
             <p>Lives: <span id="lives-number">5</span></p>
         </section>
@@ -30,31 +47,17 @@
             <p>Press 'New Game' button to start!</p>
         </section>
 
-        <section id="alphabet">
+        <section id="result-message">
 
         </section>
 
-        <section id="result-message">
+        <section id="alphabet">
 
         </section>
         
         <section id="player-interaction">
             <input id="letter-input" type="text" name ="letter-input" maxlength="1">
             <button id="submit" type="submit">Submit</button>
-            <button id="start">New Game</button>
-            <div id="word-length">
-                <p>Choose word length:</p>
-                <select name="length" id="length">
-                    <option value="random">random</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-            </div>
         </section>
         <section id="incorrect-letters">
             <h2>Incorrect Letters:</h2>
