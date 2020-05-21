@@ -12,6 +12,7 @@ const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm
 const select = document.querySelector('#length');
 const definition = document.querySelector('#definition');
 const alphabetSection = document.querySelector('#alphabet');
+const percent = document.querySelector('#percent');
 
 let wonGamesCount = 0;
 let lostGamesCount = 0;
@@ -19,6 +20,11 @@ let livesNumber = 5;
 let round = 0;
 let word = '';
 let letterarray = [];
+
+/* calculate winning rate */
+function calculateWinRate(winNumber,lostNumber)  {
+    return Number.parseFloat(winNumber/(winNumber + lostNumber)).toFixed(3)
+}
 
 /* reveal word definition */
 
@@ -240,6 +246,7 @@ submitButton.addEventListener('click', () => {
                   wonGamesCount += 1;
                   wonGames.innerText = wonGamesCount;
                   resultMessage.innerText = 'Game won! Press New Game button to start next round.';
+                  percent.innerText = `${calculateWinRate(wonGamesCount, lostGamesCount)}`;
                   revealWordDefinition(word);
                   select.disabled = false;
               }
@@ -265,6 +272,7 @@ submitButton.addEventListener('click', () => {
                   resultMessage.style.color = 'red';
                   chosenWord.innerText = word;
                   lostGamesCount += 1;
+                  percent.innerText = `${calculateWinRate(wonGamesCount, lostGamesCount)}`;
                   lostGames.innerText = lostGamesCount;
                   letterInput.disabled = true;
                   startButton.disabled = false;
