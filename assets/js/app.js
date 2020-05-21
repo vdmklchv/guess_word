@@ -10,6 +10,7 @@ const incorrectLetterGroup = document.querySelector('#incorrect-letter-group');
 const livesNumberSpan = document.querySelector('#lives-number');
 const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 const select = document.querySelector('#length');
+const definition = document.querySelector('#definition');
 
 let wonGamesCount = 0;
 let lostGamesCount = 0;
