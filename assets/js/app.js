@@ -1,9 +1,7 @@
 const startButton = document.querySelector('#start');
 const roundNumberSpan = document.querySelector('#round-number');
 const chosenWord = document.querySelector('#chosen-word');
-const submitButton = document.querySelector('#submit');
 const resultMessage = document.querySelector('#result-message');
-const letterInput = document.querySelector('#letter-input');
 const wonGames = document.querySelector('#won');
 const lostGames = document.querySelector('#lost');
 const incorrectLetterGroup = document.querySelector('#incorrect-letter-group');
@@ -126,7 +124,6 @@ function revealGuessedLetters(array, letter)    {
 function checkValidLetter(letter)   {
     if (errorLetterArray.includes(letter) || chosenWord.innerText.split('').includes(letter))   { //checking if submitted letter has been already tried
         resultMessage.innerText = 'You have already tried this letter. Please provide another one.';
-        letterInput.value = '';
         resultMessage.style.color = 'black';
         return false;
     }
@@ -160,44 +157,38 @@ function alphabetToggle(array)  {
 
 /* binding keyboard keys to letters */
 
+/* check if letter in word */
 
+function checkIfLetterCorrect(letter, text) {
+   for (let i of text)    {
+        if (letter === i)   {
+            return true;
+        }
+   }
+   return false;
+}  
 
-window.addEventListener('keyup', (event) => {
-    if (event.keyCode === 13)   {
-        submitButton.click();
-    }
-})
+/* game mechanics */
 
-alphabetDraw(alphabet);
+alphabetDraw(alphabet); //draw alphabet buttons 
 
+/* checking pressed keyboard keys and registering correct letter */
 window.addEventListener('keyup', (event) => {
     document.querySelector(`#b${String.fromCharCode(event.keyCode).toLowerCase()}`).click();
 })
 
+/* ability to start game with spacebar */
 window.addEventListener('keyup', (event) => {
     if (event.keyCode === 32)   {
         startButton.click();
     }
 })
 
-
-/* start new round */
-letterInput.disabled = true;
-submitButton.disabled = true;
+/* get all letters and toggle them to disabled before the round starts */
 const alphabetLetters = document.querySelectorAll('.alphabet-letter');
 alphabetToggle(alphabetLetters);
 
-let registerTarget = '';
-
 /* input letter with mouse */
-alphabetSection.addEventListener('click', (event) => {
-    letterInput.value = event.target.innerText;
-    registerTarget = event.target;
-    submitButton.addEventListener('click', () => {
-        registerTarget.disabled = true;
-        registerTarget.classList.add('nohover');
-    })
-})
 
 startButton.addEventListener('click', () => {
     for (let i of alphabetLetters)  {
@@ -216,69 +207,55 @@ startButton.addEventListener('click', () => {
     letterArray = word.split(''); //make array of word letters
     incorrectLetterGroup.innerText = '';
     livesNumberSpan.innerText = 5;
-    letterInput.disabled = false;
     startButton.disabled = true;
-    submitButton.disabled = false;
-    letterInput.value = '';
     round += 1; //increase round number;
     roundNumberSpan.innerText = round; //print round number on page
     resultMessage.innerText = 'Make a guess (letters from a to z):';
     resultMessage.style.color = 'black';
 })
 
+alphabetSection.addEventListener('click', (event) => {
+    if (checkIfLetterCorrect(event.target.innerText, word)) {
+        event.target.disabled = true;
+        event.target.classList.add('nohover');
+        resultMessage.innerText = 'Congratulations! The letter is correct. Input another letter:';
+        resultMessage.style.color = 'green';
+        const letterIndices = findAllIndices(letterArray, event.target.innerText); // find array of indices of correctly guessed letter
+        revealGuessedLetters(letterIndices, event.target.innerText);
+        if (!chosenWord.innerText.split('').includes('*'))   {
+            startButton.disabled = false;
+            wonGamesCount += 1;
+            wonGames.innerText = wonGamesCount;
+            resultMessage.innerText = 'Game won! Press New Game button to start next round.';
+            percent.innerText = `${calculateWinRate(wonGamesCount, lostGamesCount)}`;
+            revealWordDefinition(word);
+            select.disabled = false;
+        }
+    }
+    else  {
+        livesNumber = +livesNumberSpan.innerText - 1;
+        livesNumberSpan.innerText = livesNumber;
+        errorLetterArray.push(event.target.innerText);
 
-submitButton.addEventListener('click', () => {
-    const submittedLetter = letterInput.value.toLowerCase(); //storing submitted letter in a variable
-      checkValidLetter(submittedLetter);
+        if (livesNumber > 0) {
+            resultMessage.innerText = 'Sorry. No such letter. Try again:';
+            resultMessage.style.color = 'red';
+            incorrectLetterGroup.innerText = errorLetterArray.join(' ');
+        } 
+        if (livesNumber === 0) {
+            incorrectLetterGroup.innerText = errorLetterArray.join(' ');
+            resultMessage.innerText = 'Game Over. You have lost. Start the next round.'
+            revealWordDefinition(word);
+            select.disabled = false;
+            resultMessage.style.color = 'red';
+            chosenWord.innerText = word;
+            lostGamesCount += 1;
+            percent.innerText = `${calculateWinRate(wonGamesCount, lostGamesCount)}`;
+            lostGames.innerText = lostGamesCount;
+            startButton.disabled = false;
+        }
+    }   
+})
 
-      /* game mechanics */
-      if (checkValidLetter(submittedLetter))    {
-          if (letterArray.includes(submittedLetter)) { //check if word includes submitted letters
-              resultMessage.innerText = 'Congratulations! The letter is correct. Input another letter:';
-              resultMessage.style.color = 'green';
-              const letterIndices = findAllIndices(letterArray, submittedLetter); // find array of indices of correctly guessed letter
-              revealGuessedLetters(letterIndices, submittedLetter);
-              letterInput.value = '';
-              if (!chosenWord.innerText.split('').includes('*'))   {
-                  letterInput.disabled = true;
-                  submitButton.disabled = true;
-                  startButton.disabled = false;
-                  wonGamesCount += 1;
-                  wonGames.innerText = wonGamesCount;
-                  resultMessage.innerText = 'Game won! Press New Game button to start next round.';
-                  percent.innerText = `${calculateWinRate(wonGamesCount, lostGamesCount)}`;
-                  revealWordDefinition(word);
-                  select.disabled = false;
-              }
-          } else  {
-              livesNumber = +livesNumberSpan.innerText - 1;
-              livesNumberSpan.innerText = livesNumber;
-              errorLetterArray.push(letterInput.value);
-              for (let i of alphabetLetters)    {
-                  if (i.value === letterInput.value)    {
-                      i.disabled = true;
-                  }
-              }
-              if (livesNumber > 0) {
-                  resultMessage.innerText = 'Sorry. No such letter. Try again:';
-                  resultMessage.style.color = 'red';
-                  incorrectLetterGroup.innerText = errorLetterArray.join(' ');
-              } 
-              if (livesNumber === 0) {
-                  incorrectLetterGroup.innerText = errorLetterArray.join(' ');
-                  resultMessage.innerText = 'Game Over. You have lost. Start the next round.'
-                  revealWordDefinition(word);
-                  select.disabled = false;
-                  resultMessage.style.color = 'red';
-                  chosenWord.innerText = word;
-                  lostGamesCount += 1;
-                  percent.innerText = `${calculateWinRate(wonGamesCount, lostGamesCount)}`;
-                  lostGames.innerText = lostGamesCount;
-                  letterInput.disabled = true;
-                  startButton.disabled = false;
-                  submitButton.disabled = true;
-              }
-              letterInput.value = '';
-          }   
-      }
-  })  
+
+     
