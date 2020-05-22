@@ -200,7 +200,7 @@ header  h1 {
     }
 
     #start  {
-        font-size: 20px;
+        font-size: 17px;
         padding: 5px;
     }
 
@@ -209,7 +209,7 @@ header  h1 {
     }
 
     #user-lives, #round, #stats {
-        font-size: 20px;
+        font-size: 17px;
     }
 
     #alphabet   {
@@ -217,9 +217,9 @@ header  h1 {
     }
 
     .alphabet-letter   {
-        font-size: px;
-        min-width: 60px;
-        min-height: 40px;
+        font-size: 17px;
+        min-width: 50px;
+        min-height: 35px;
     }
 
     #incorrect-letters  {
