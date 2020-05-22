@@ -11,10 +11,11 @@ const select = document.querySelector('#length');
 const definition = document.querySelector('#definition');
 const alphabetSection = document.querySelector('#alphabet');
 const percent = document.querySelector('#percent');
+const difficulty = document.querySelector('#difficulty-level');
 
 let wonGamesCount = 0;
 let lostGamesCount = 0;
-let livesNumber = 5;
+let livesNumber;
 let round = 0;
 let word = '';
 let letterarray = [];
@@ -41,10 +42,12 @@ const alphabetLetters = document.querySelectorAll('.alphabet-letter');
 alphabetDisable(alphabetLetters);
 /* input letter with mouse */
 
+
 startButton.addEventListener('click', () => {
     definition.innerText = 'Definition will appear here after round end.';
     alphabetEnable(alphabetLetters);
     select.disabled = true;
+    difficulty.disabled = true;
     const wordLength = document.querySelector('#length').value;
     const gameArray = defineGameArray(wordLength); //defining array for current round
     word = chooseRandomWord(gameArray).toLowerCase(); //generating word to guess in current round
@@ -52,7 +55,8 @@ startButton.addEventListener('click', () => {
     errorLetterArray = [];
     letterArray = word.split(''); //make array of word letters
     incorrectLetterGroup.innerText = '';
-    livesNumberSpan.innerText = 5;
+    livesNumber = selectDifficulty();
+    livesNumberSpan.innerText = livesNumber;
     startButton.disabled = true;
     round += 1; //increase round number;
     roundNumberSpan.innerText = round; //print round number on page
@@ -73,6 +77,7 @@ alphabetSection.addEventListener('click', (event) => {
             wonGamesCount += 1;
             wonGames.innerText = wonGamesCount;
             resultMessage.innerText = 'Game won! Press New Game button to start next round.';
+            difficulty.disabled = false;
             alphabetDisable(alphabetLetters);
             percent.innerText = `${calculateWinRate(wonGamesCount, lostGamesCount)}`;
             revealWordDefinition(word);
@@ -96,6 +101,7 @@ alphabetSection.addEventListener('click', (event) => {
             alphabetDisable(alphabetLetters);
             revealWordDefinition(word);
             select.disabled = false;
+            difficulty.disabled = false;
             resultMessage.style.color = 'red';
             chosenWord.innerText = word;
             lostGamesCount += 1;
@@ -244,8 +250,6 @@ function alphabetEnable(array) {
     }
 }
 
-/* binding keyboard keys to letters */
-
 /* check if letter in word */
 
 function checkIfLetterCorrect(letter, text) {
@@ -256,3 +260,14 @@ function checkIfLetterCorrect(letter, text) {
    }
    return false;
 }  
+
+/* select difficulty */
+function selectDifficulty()    {
+    if (difficulty.value === 'easy')    {
+        return '7';
+    } else if (difficulty.value === 'medium') {
+        return '5';
+    } else {
+        return '3';
+    }
+}

@@ -140,7 +140,7 @@ header  h1 {
     width: 100%;
 }
 
-#word-length    {
+#word-length, #difficulty   {
     display: flex;
     align-items: center;
     width: 50%;
@@ -148,7 +148,7 @@ header  h1 {
     font-size: 20px;
 }
 
-#word-length select {
+#word-length select, #difficulty select {
     font-size: 20px;
     margin-left: 50px;
 }
@@ -195,7 +195,7 @@ header  h1 {
         text-align: center;
         padding: 0 5px;
     }
-    #chosen-word, #definition, #start-game-block    {
+    #chosen-word, #definition, #start-game-block, #difficulty   {
         margin-bottom: 10px;
     }
 
