@@ -142,6 +142,7 @@ header  h1 {
 
 #incorrect-letters  {
     display: flex;
+    align-items: center;
     margin-left: 100px;
     font-size: 20px;
     flex-grow: 1;
@@ -163,8 +164,11 @@ header  h1 {
 
 
 #incorrect-letter-group {
+    display: flex;
+    align-items: center;
+    min-height: 70px;
     flex-grow: 3;
-    font-size: 20px;
+    font-size: 30px;
     margin-left: 100px;
     border: 5px solid #442E6B;
     border-radius: 5px;
