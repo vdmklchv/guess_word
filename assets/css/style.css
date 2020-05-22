@@ -214,6 +214,7 @@ header  h1 {
 
     #won, #lost {
         border-right: 1px solid gray;
+        padding-right: 5px;
     }
 
     #alphabet   {
