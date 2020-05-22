@@ -16,7 +16,7 @@
         <div id="start-game-block">
             <button id="start">New Game (Space)</button>
             <div id="word-length">
-                <p>Choose word length:</p>
+                <p>Word length:</p>
                 <select name="length" id="length">
                     <option value="random">random</option>
                     <option value="4">4</option>
@@ -29,11 +29,18 @@
                 </select>
             </div>
             <div id="difficulty">
-                <p>Difficulty</p>
+                <p>Difficulty:</p>
                 <select name="difficulty-level" id="difficulty-level">
                     <option value="easy">Easy (7 lives)</option>
                     <option value="medium">Medium (5 lives)</option>
                     <option value="hard">Hard (3 lives)</option>
+                </select>
+            </div>
+            <div id="mode">
+                <p>Game mode:</p>
+                <select name="game-mode" id="game-mode">
+                    <option value="infinite">Infinite</option>
+                    <option value="maxwords">Max-Words</option>
                 </select>
             </div>
         </div>
@@ -47,10 +54,12 @@
         </section>
 
         <section id="stats">
-            <p>Games won: <span id="won">0</span></p>
-            <p>Games lost: <span id="lost">0</span></p>
-            <p>Winning rate: <span id="percent">n/a</span></p>
+            <p id="games-won">Games won: <span id="won">0</span></p>
+            <p id="games-lost">Games lost: <span id="lost">0</span></p>
+            <p id="win-rate">Winning rate: <span id="percent">n/a</span></p>
+            <p id="words-number">Guessed words: <span id="guessed-words">0</span></p>
         </section>
+
 
         <section id="chosen-word">
             <p>Press 'New Game' button to start!</p>

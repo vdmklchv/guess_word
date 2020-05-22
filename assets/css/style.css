@@ -140,7 +140,7 @@ header  h1 {
     width: 100%;
 }
 
-#word-length, #difficulty   {
+#word-length, #difficulty, #mode   {
     display: flex;
     align-items: center;
     width: 50%;
@@ -148,9 +148,9 @@ header  h1 {
     font-size: 20px;
 }
 
-#word-length select, #difficulty select {
+#word-length select, #difficulty select, #mode select {
     font-size: 20px;
-    margin-left: 50px;
+    margin-left: 10px;
 }
 
 

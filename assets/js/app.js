@@ -5,6 +5,7 @@ const resultMessage = document.querySelector('#result-message');
 const wonGames = document.querySelector('#won');
 const lostGames = document.querySelector('#lost');
 const incorrectLetterGroup = document.querySelector('#incorrect-letter-group');
+const incorrectLetterSection = document.querySelector('#incorrect-letters');
 const livesNumberSpan = document.querySelector('#lives-number');
 const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 const select = document.querySelector('#length');
@@ -12,6 +13,13 @@ const definition = document.querySelector('#definition');
 const alphabetSection = document.querySelector('#alphabet');
 const percent = document.querySelector('#percent');
 const difficulty = document.querySelector('#difficulty-level');
+const wonGamesDiv = document.querySelector('#games-won');
+const lostGamesDiv = document.querySelector('#games-lost');
+const winRateDiv = document.querySelector('#win-rate');
+const gameMode = document.querySelector('#game-mode');
+const guessedWords = document.querySelector('#words-number');
+const guessedWordsSpan = document.querySelector('#guessed-words');
+const roundSection = document.querySelector('#round');
 
 let wonGamesCount = 0;
 let lostGamesCount = 0;
@@ -22,6 +30,30 @@ let letterarray = [];
 
 
 /* game mechanics */
+
+/* choose game mode */
+
+gameMode.addEventListener('change', () => {
+    if (gameMode.value === 'maxwords')  {
+        wonGamesDiv.style.display = "none";
+        lostGamesDiv.style.display = "none";
+        winRateDiv.style.display = "none";
+        guessedWords.style.display = "block";
+        livesNumber = 100;
+        livesNumberSpan.innerText = '100';
+        incorrectLetterSection.style.display = "none";
+        roundSection.style.display = "none";
+    } else if (gameMode.value === 'infinite')   {
+        wonGamesDiv.style.display = "block";
+        lostGamesDiv.style.display = "block";
+        winRateDiv.style.display = "block";
+        guessedWords.style.display = "none";
+        incorrectLetterSection.style.display = "block";
+        roundSection.style.display = "block";       
+    }
+})
+
+
 
 alphabetDraw(alphabet); //draw alphabet buttons 
 
@@ -37,6 +69,7 @@ window.addEventListener('keyup', (event) => {
     }
 })
 
+guessedWords.style.display = "none";
 /* get all letters and toggle them to disabled before the round starts */
 const alphabetLetters = document.querySelectorAll('.alphabet-letter');
 alphabetDisable(alphabetLetters);
@@ -44,73 +77,102 @@ alphabetDisable(alphabetLetters);
 
 
 startButton.addEventListener('click', () => {
-    definition.innerText = 'Definition will appear here after round end.';
-    alphabetEnable(alphabetLetters);
-    select.disabled = true;
-    difficulty.disabled = true;
+    if (gameMode.value === 'infinite') {
+        disableInterface();
+        alphabetEnable(alphabetLetters);
+        errorLetterArray = [];
+        incorrectLetterGroup.innerText = '';
+        livesNumber = selectDifficulty();
+        livesNumberSpan.innerText = livesNumber;
+        round += 1; //increase round number;
+        roundNumberSpan.innerText = round; //print round number on page
+        gamePrepare();
+    } else if (gameMode.value === 'maxwords')   {
+        disableInterface();
+        gamePrepare();
+        alphabetEnable(alphabetLetters);
+    }
+})
+
+/* generating word */
+function generateWord() {
     const wordLength = document.querySelector('#length').value;
     const gameArray = defineGameArray(wordLength); //defining array for current round
     word = chooseRandomWord(gameArray).toLowerCase(); //generating word to guess in current round
-    generateAsterisks(word);//generate asterisks in needed number 
-    errorLetterArray = [];
     letterArray = word.split(''); //make array of word letters
-    incorrectLetterGroup.innerText = '';
-    livesNumber = selectDifficulty();
-    livesNumberSpan.innerText = livesNumber;
-    startButton.disabled = true;
-    round += 1; //increase round number;
-    roundNumberSpan.innerText = round; //print round number on page
+}
+
+/* common interface preparations */
+function gamePrepare()  {
+    generateWord();
+    generateAsterisks(word);//generate asterisks in needed number 
     resultMessage.innerText = 'Make a guess (letters from a to z):';
     resultMessage.style.color = 'black';
-})
+    definition.innerText = 'Definition will appear here after round end.';
+}
 
 alphabetSection.addEventListener('click', (event) => {
-    if (checkIfLetterCorrect(event.target.innerText, word)) {
-        event.target.disabled = true;
-        /*event.target.classList.add('nohover');*/
-        resultMessage.innerText = 'Congratulations! The letter is correct. Input another letter:';
-        resultMessage.style.color = 'green';
-        const letterIndices = findAllIndices(letterArray, event.target.innerText); // find array of indices of correctly guessed letter
-        revealGuessedLetters(letterIndices, event.target.innerText);
-        if (!chosenWord.innerText.split('').includes('*'))   {
-            startButton.disabled = false;
-            wonGamesCount += 1;
-            wonGames.innerText = wonGamesCount;
-            resultMessage.innerText = 'Game won! Press New Game button to start next round.';
-            difficulty.disabled = false;
-            alphabetDisable(alphabetLetters);
-            percent.innerText = `${calculateWinRate(wonGamesCount, lostGamesCount)}`;
-            revealWordDefinition(word);
-            select.disabled = false;
+    if (gameMode.value === 'infinite') {
+        if (checkIfLetterCorrect(event.target.innerText, word)) {
+            event.target.disabled = true;
+            /*event.target.classList.add('nohover');*/
+            resultMessage.innerText = 'Congratulations! The letter is correct. Input another letter:';
+            resultMessage.style.color = 'green';
+            const letterIndices = findAllIndices(letterArray, event.target.innerText); // find array of indices of correctly guessed letter
+            revealGuessedLetters(letterIndices, event.target.innerText);
+            if (!chosenWord.innerText.split('').includes('*'))   {
+                enableInterface();
+                wonGamesCount += 1;
+                wonGames.innerText = wonGamesCount;
+                resultMessage.innerText = 'Game won! Press New Game button to start next round.';
+                alphabetDisable(alphabetLetters);
+                percent.innerText = `${calculateWinRate(wonGamesCount, lostGamesCount)}`;
+                revealWordDefinition(word);
+            }
         }
-    }
-    else  {
-        livesNumber = +livesNumberSpan.innerText - 1;
-        livesNumberSpan.innerText = livesNumber;
-        errorLetterArray.push(event.target.innerText);
-        event.target.disabled = true;
+        else  {
+            livesNumber = +livesNumberSpan.innerText - 1;
+            livesNumberSpan.innerText = livesNumber;
+            errorLetterArray.push(event.target.innerText);
+            event.target.disabled = true;
 
-        if (livesNumber > 0) {
-            resultMessage.innerText = 'Sorry. No such letter. Try again:';
-            resultMessage.style.color = 'red';
-            incorrectLetterGroup.innerText = errorLetterArray.join(' ');
+            if (livesNumber > 0) {
+                resultMessage.innerText = 'Sorry. No such letter. Try again:';
+                resultMessage.style.color = 'red';
+                incorrectLetterGroup.innerText = errorLetterArray.join(' ');
+            } 
+            if (livesNumber === 0) {
+                incorrectLetterGroup.innerText = errorLetterArray.join(' ');
+                enableInterface();
+                resultMessage.innerText = 'Game Over. You have lost. Start the next round.';
+                alphabetDisable(alphabetLetters);
+                revealWordDefinition(word);
+                resultMessage.style.color = 'red';
+                chosenWord.innerText = word;
+                lostGamesCount += 1;
+                percent.innerText = `${calculateWinRate(wonGamesCount, lostGamesCount)}`;
+                lostGames.innerText = lostGamesCount;
+            }
         } 
-        if (livesNumber === 0) {
-            incorrectLetterGroup.innerText = errorLetterArray.join(' ');
-            resultMessage.innerText = 'Game Over. You have lost. Start the next round.';
-            alphabetDisable(alphabetLetters);
-            revealWordDefinition(word);
-            select.disabled = false;
-            difficulty.disabled = false;
-            resultMessage.style.color = 'red';
-            chosenWord.innerText = word;
-            lostGamesCount += 1;
-            percent.innerText = `${calculateWinRate(wonGamesCount, lostGamesCount)}`;
-            lostGames.innerText = lostGamesCount;
-            startButton.disabled = false;
-        }
-    }   
+    } else if (gameMode.value === 'maxwords')   {
+
+    }  
 })
+/* disable interface during game */
+function disableInterface() {
+    gameMode.disabled = true;
+    select.disabled = true;
+    difficulty.disabled = true;
+    startButton.disabled = true;
+}
+
+/* enable interface */
+function enableInterface() {
+    gameMode.disabled = false;
+    select.disabled = false;
+    difficulty.disabled = false;
+    startButton.disabled = false;
+}
 
 /* calculate winning rate */
 function calculateWinRate(winNumber,lostNumber)  {
