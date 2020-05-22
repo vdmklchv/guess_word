@@ -1,5 +1,4 @@
 const words = `
-a
 abandon
 abandoned
 ability
@@ -23,9 +22,8 @@ accidental
 accidentally
 accommodation
 accompany
-according to
+according
 account
-account for
 accurate
 accurately
 accuse
@@ -50,10 +48,7 @@ adapt
 add
 addition
 additional
-add on
 address
-add up
-add up to
 adequate
 adequately
 adjust
@@ -105,8 +100,6 @@ alive
 all
 allied
 allow
-allow for
-all right
 ally
 almost
 alone
@@ -124,7 +117,6 @@ alternatively
 although
 altogether
 always
-a.m.
 amaze
 amazed
 amazing
@@ -132,7 +124,6 @@ ambition
 ambulance
 among
 amount
-amount to
 amuse
 amused
 amusing
@@ -155,7 +146,6 @@ annual
 annually
 another
 answer
-anti-
 anticipate
 anxiety
 anxious
@@ -167,7 +157,6 @@ anything
 anyway
 anywhere
 apart
-apart from
 apartment
 apologize
 apparent
@@ -212,10 +201,8 @@ artificially
 artist
 artistic
 artistically
-as
 ashamed
 aside
-aside from
 ask
 asleep
 aspect
@@ -227,7 +214,6 @@ associated
 association
 assume
 assure
-at
 atmosphere
 atom
 attach
@@ -236,7 +222,6 @@ attack
 attempt
 attempted
 attend
-attend to
 attention
 attitude
 attorney
@@ -271,7 +256,6 @@ backwards
 bacteria
 bad
 badly
-bad-tempered
 bag
 baggage
 bake
@@ -301,12 +285,10 @@ beak
 bear
 beard
 beat
-beat up
 beautiful
 beautifully
 beauty
 because
-because of
 become
 bed
 bedroom
@@ -319,13 +301,10 @@ behalf
 behave
 behaviour
 behind
-be left over
 belief
 believe
-believe in
 bell
 belong
-belong to
 below
 belt
 bend
@@ -340,7 +319,7 @@ betting
 between
 beyond
 bicycle
-bid 1
+bid
 big
 bike
 bill
@@ -364,8 +343,6 @@ block
 blonde
 blood
 blow
-blow out
-blow up
 blue
 board
 boat
@@ -397,18 +374,10 @@ brand
 brave
 bread
 break
-break down
 breakfast
-break in
-break into
-break off
-break out
-break up
 breast
 breath
 breathe
-breathe in
-breathe out
 breathing
 breed
 brick
@@ -419,11 +388,6 @@ bright
 brightly
 brilliant
 bring
-bring back
-bring down
-bring forward
-bring out
-bring up
 broad
 broadcast
 broadly
@@ -435,15 +399,11 @@ bubble
 budget
 build
 building
-build up
 bullet
 bunch
 burn
-burn down
 burnt
 burst
-burst into
-burst out
 bury
 bus
 bush
@@ -463,20 +423,14 @@ cake
 calculate
 calculation
 call
-call back
 called
-call for
-call off
-call up
 calm
-calm down
 calmly
 camera
 camp
 campaign
 camping
-can 1
-can 2
+can
 cancel
 cancer
 candidate
@@ -493,7 +447,6 @@ card
 cardboard
 care
 career
-care for
 careful
 carefully
 careless
@@ -501,8 +454,6 @@ carelessly
 carpet
 carrot
 carry
-carry on
-carry out
 case
 cash
 cast
@@ -512,7 +463,6 @@ catch
 catch up
 category
 cause
-CD
 cease
 ceiling
 celebrate
@@ -536,7 +486,6 @@ challenge
 chamber
 chance
 change
-change round
 channel
 chapter
 character
@@ -550,14 +499,7 @@ chat
 cheap
 cheaply
 cheat
-cheat of
 check
-check in
-check into
-check on
-check out
-check over
-check up on
 cheek
 cheerful
 cheerfully
@@ -577,8 +519,6 @@ chocolate
 choice
 choose
 chop
-chop down
-chop off
 church
 cigarette
 cinema
@@ -593,11 +533,8 @@ class
 classic
 classroom
 clean
-clean up
 clear
 clearly
-clear out
-clear up
 clerk
 clever
 click
@@ -606,8 +543,7 @@ climate
 climb
 climbing
 clock
-close 1
-close 2
+close
 closed
 closely
 closet
@@ -636,18 +572,7 @@ column
 combination
 combine
 come
-come across
-come down
 comedy
-come from
-come in
-come off
-come on
-come out
-come round
-come to
-come up
-come up to
 comfort
 comfortable
 comfortably
@@ -678,7 +603,6 @@ complicate
 complicated
 computer
 concentrate
-concentrate on
 concentration
 concept
 concern
@@ -717,7 +641,6 @@ considerable
 considerably
 consideration
 consist
-consist of
 constant
 constantly
 construct
@@ -728,7 +651,7 @@ contact
 contain
 container
 contemporary
-content 1
+content
 contest
 context
 continent
@@ -753,7 +676,6 @@ cooker
 cookie
 cooking
 cool
-cool down
 cope
 copy
 core
@@ -769,7 +691,6 @@ could
 council
 count
 counter
-count on
 country
 countryside
 county
@@ -781,7 +702,6 @@ cousin
 cover
 covered
 covering
-cover up
 cow
 crack
 cracked
@@ -792,7 +712,6 @@ cream
 create
 creature
 credit
-credit card
 crime
 criminal
 crisis
@@ -803,7 +722,6 @@ criticism
 criticize
 crop
 cross
-cross out
 crowd
 crowded
 crown
@@ -811,7 +729,6 @@ crucial
 cruel
 crush
 cry
-cry out
 cultural
 culture
 cup
@@ -821,7 +738,6 @@ cure
 curious
 curiously
 curl
-curl up
 curly
 current
 currently
@@ -832,11 +748,6 @@ custom
 customer
 customs
 cut
-cut back
-cut down
-cut off
-cut out
-cut up
 cycle
 cycling
 dad
@@ -858,8 +769,6 @@ day
 dead
 deaf
 deal
-deal in
-deal with
 dear
 death
 debate
@@ -868,7 +777,6 @@ decade
 decay
 December
 decide
-decide on
 decision
 declare
 decline
@@ -901,14 +809,12 @@ deny
 department
 departure
 depend
-depend on
 deposit
 depress
 depressed
 depressing
 depth
 derive
-derive from
 describe
 description
 desert
@@ -932,14 +838,11 @@ development
 device
 devote
 devoted
-devote to
 diagram
 diamond
 diary
 dictionary
 die
-die away
-die out
 diet
 difference
 different
@@ -959,7 +862,6 @@ disabled
 disadvantage
 disagree
 disagreement
-disagree with doing
 disappear
 disappoint
 disappointed
@@ -999,7 +901,6 @@ divide
 division
 divorce
 divorced
-do 1
 doctor
 document
 dog
@@ -1010,9 +911,6 @@ door
 dot
 double
 doubt
-do up
-do with
-do without
 down
 downstairs
 downward
@@ -1029,32 +927,24 @@ drawing
 dream
 dress
 dressed
-dress up
 drink
 drive
-drive away
-drive off
 driver
 driving
 drop
-drop out
 drug
 drugstore
 drum
 drunk
 dry
-dry off
-dry up
 due
 dull
 dump
 during
 dust
 duty
-DVD
 dying
 each
-each other
 ear
 early
 earn
@@ -1065,8 +955,6 @@ east
 eastern
 easy
 eat
-eat out
-eat up
 economic
 economy
 edge
@@ -1081,7 +969,6 @@ effectively
 efficient
 efficiently
 effort
-e.g.
 egg
 eight
 eighteen
@@ -1128,7 +1015,6 @@ encounter
 encourage
 encouragement
 end
-end in
 ending
 end up
 enemy
@@ -1156,7 +1042,7 @@ enthusiastically
 entire
 entirely
 entitle
-entrance 1
+entrance
 entry
 envelope
 environment
@@ -1174,7 +1060,6 @@ essentially
 establish
 estate
 estimate
-etc.
 euro
 even
 evening
@@ -1188,7 +1073,6 @@ everything
 everywhere
 evidence
 evil
-ex-
 exact
 exactly
 exaggerate
@@ -1244,7 +1128,6 @@ extreme
 extremely
 eye
 face
-face up to
 facility
 fact
 factor
@@ -1310,22 +1193,17 @@ figure
 figure out
 file
 fill
-fill in
-fill out
-fill up
 film
 final
 finally
 finance
 financial
 find
-find out
 fine
 finely
 finger
 finish
 finished
-finish off
 fire
 firm
 firmly
@@ -1333,7 +1211,6 @@ first
 fish
 fishing
 fit
-fit in
 five
 fix
 fixed
@@ -1360,7 +1237,6 @@ fold
 folding
 follow
 following
-follow up
 food
 foot
 football
@@ -1404,7 +1280,6 @@ friend
 friendly
 friendship
 frighten
-frighten away/off
 frightened
 frightening
 from
@@ -1417,7 +1292,6 @@ full
 fully
 fun
 function
-function as
 fund
 fundamental
 funeral
@@ -1453,62 +1327,22 @@ genuine
 genuinely
 geography
 get
-get away
-get away with
-get back
-get by
-get in
-get into
-get off
-get on
-get on with
-get out of
-get over
-get round
-get round to
-get through
-get up
 giant
 gift
 girl
 girlfriend
 give
-give away
-give back
-give in
-give off
-give out
-give up
 glad
 glass
 global
 glove
 glue
-go
-go ahead
 goal
-go away
-go back
-go back to
-go by
 god
-go down
-go into
 gold
 good
 goodbye
 goods
-go off
-go on
-go on doing
-go out
-go out with
-go over
-go round
-go through
-go through with
-go to
-go up
 govern
 government
 governor
@@ -1531,7 +1365,7 @@ grandson
 grant
 grass
 grateful
-grave 1
+grave
 gravely
 great
 greatly
@@ -1542,7 +1376,6 @@ ground
 group
 grow
 growth
-grow up
 guarantee
 guard
 guess
@@ -1558,23 +1391,9 @@ half
 hall
 hammer
 hand
-hand back
-hand down
-hand in
 handle
-hand out
-hand over
-hand round
 hang
-hang about
-hang about with
-hang around
-hang around with
-hang on
-hang on to
-hang up
 happen
-happen to
 happily
 happiness
 happy
@@ -1587,23 +1406,16 @@ hat
 hate
 hatred
 have
-have back
-have on
-have to
-he
 head
 headache
 heal
 health
 healthy
 hear
-hear from
 hearing
-hear of
 heart
 heat
 heating
-heat up
 heaven
 heavily
 heavy
@@ -1621,7 +1433,6 @@ hero
 hers
 herself
 hesitate
-hi
 hide
 high
 highlight
@@ -1632,18 +1443,12 @@ him
 himself
 hip
 hire
-hire out
 his
 historical
 history
 hit
 hobby
 hold
-hold back
-hold on
-hold on to
-hold out
-hold up
 hole
 holiday
 hollow
@@ -1679,19 +1484,15 @@ hungry
 hunt
 hunting
 hurry
-hurry up
 hurt
 husband
-I
 ice
-ice cream
+icecream
 idea
 ideal
 identify
 identify with
 identity
-i.e.
-if
 ignore
 ill
 illegal
@@ -1721,7 +1522,6 @@ impression
 impressive
 improve
 improvement
-in
 inability
 inch
 incident
@@ -1768,12 +1568,9 @@ insect
 insert
 inside
 insist
-insist on
-insist on doing
 install
 instance
 instead
-instead of
 institute
 institution
 instruction
@@ -1819,7 +1616,6 @@ irritated
 irritating
 island
 issue
-it
 item
 its
 itself
@@ -1832,7 +1628,6 @@ jelly
 jewellery
 job
 join
-join in
 joint
 jointly
 joke
@@ -1852,10 +1647,6 @@ justified
 justify
 keen
 keep
-keep out
-keep out of
-keep up
-keep up with
 key
 keyboard
 kick
@@ -1876,8 +1667,6 @@ knit
 knitted
 knitting
 knock
-knock down
-knock out
 knot
 know
 knowledge
@@ -1896,22 +1685,21 @@ lane
 language
 large
 largely
-last 1
+last
 late
 later
 latest
 latter
 laugh
-laugh at
 launch
 law
 lawyer
 lay
 layer
 lazy
-lead 1
+lead
 leader
-leading 1
+leading
 leaf
 league
 lean
@@ -1919,7 +1707,6 @@ learn
 least
 leather
 leave
-leave out
 lecture
 left
 leg
@@ -1931,18 +1718,13 @@ length
 less
 lesson
 let
-let down
-let off
 letter
 level
 library
 licence
 license
 lid
-lie 1
-lie 2
-lie around
-lie down
+lie
 life
 lift
 light
@@ -1951,7 +1733,6 @@ like
 likely
 limit
 limited
-limit to
 line
 link
 lip
@@ -1961,12 +1742,8 @@ listen
 literature
 litre
 little
-live 1
-live 2
+live
 lively
-live on
-live through
-live together
 living
 load
 loan
@@ -1976,25 +1753,11 @@ locate
 located
 location
 lock
-lock up
 logic
 logical
 lonely
 long
 look
-look after
-look at
-look down on
-look forward to
-look into
-look on
-look on with
-look out
-look out for
-look round
-look through
-look up
-look up to
 loose
 loosely
 lord
@@ -2028,10 +1791,6 @@ maintain
 major
 majority
 make
-make into
-make up
-make-up
-make up for
 male
 mall
 man
@@ -2057,7 +1816,6 @@ massive
 master
 match
 matching
-match up
 mate
 material
 mathematics
@@ -2067,7 +1825,6 @@ may
 May
 maybe
 mayor
-me
 meal
 mean
 meaning
@@ -2082,8 +1839,6 @@ medicine
 medium
 meet
 meeting
-meet up
-meet with
 melt
 member
 membership
@@ -2099,7 +1854,6 @@ message
 metal
 method
 metre
-mid-
 midday
 middle
 midnight
@@ -2120,20 +1874,16 @@ minister
 ministry
 minor
 minority
-minute 1
+minute
 mirror
 miss
 missing
-miss out
 mistake
-mistake for
 mistaken
 mix
 mixed
 mixture
-mix up
 mobile
-mobile phone
 model
 modern
 mom
@@ -2161,16 +1911,9 @@ mountain
 mouse
 mouth
 move
-move in
 movement
-move out
-move over
 movie
-movie theater
 moving
-Mr
-Mrs
-Ms
 much
 mud
 multiply
@@ -2182,7 +1925,6 @@ music
 musical
 musician
 must
-my
 myself
 mysterious
 mystery
@@ -2224,7 +1966,6 @@ newly
 news
 newspaper
 next
-next to
 nice
 nicely
 niece
@@ -2235,12 +1976,10 @@ nineteenth
 ninetieth
 ninety
 ninth
-no
 nobody
 noise
 noisily
 noisy
-non-
 none
 nonsense
 no one
@@ -2277,13 +2016,10 @@ occasionally
 occupied
 occupy
 occur
-occur to
 ocean
-o’clock
 October
 odd
 oddly
-of
 off
 offence
 offend
@@ -2295,15 +2031,10 @@ officer
 official
 officially
 often
-oh
 oil
-OK
 old
-old-fashioned
-on
 once
 one
-one another
 onion
 online
 only
@@ -2311,7 +2042,6 @@ onto
 open
 opening
 openly
-open up
 operate
 operation
 opinion
@@ -2323,7 +2053,6 @@ opposing
 opposite
 opposition
 option
-or
 orange
 order
 ordinary
@@ -2336,7 +2065,6 @@ original
 originally
 other
 otherwise
-ought to
 our
 ours
 ourselves
@@ -2356,12 +2084,11 @@ owe
 own
 owner
 own up
-pace 1
+pace
 pack
 package
 packaging
 packet
-pack up
 page
 pain
 painful
@@ -2371,7 +2098,7 @@ painting
 pair
 palace
 pale
-pan 1
+pan
 panel
 pants
 paper
@@ -2388,15 +2115,9 @@ partnership
 party
 pass
 passage
-pass away
-pass by
 passenger
 passing
-pass on
-pass out
 passport
-pass round
-pass through
 past
 path
 patience
@@ -2404,21 +2125,17 @@ patient
 pattern
 pause
 pay
-pay back
 payment
 pay out
-pay up
 peace
 peaceful
 peak
 pen
 pencil
 penny
-pension 1
 people
 pepper
 per
-per cent
 perfect
 perfectly
 perform
@@ -2456,7 +2173,6 @@ picture
 piece
 pig
 pile
-pile up
 pill
 pilot
 pin
@@ -2476,9 +2192,7 @@ plastic
 plate
 platform
 play
-play about
 player
-play with
 pleasant
 pleasantly
 please
@@ -2488,15 +2202,12 @@ pleasure
 plenty
 plot
 plug
-plug in
-plus 1
-p.m.
+plus
 pocket
 poem
 poetry
 point
 pointed
-point out
 poison
 poisonous
 pole
@@ -2525,7 +2236,6 @@ possibility
 possible
 possibly
 post
-post office
 pot
 potato
 potential
@@ -2577,7 +2287,6 @@ principle
 print
 printer
 printing
-print off
 prior
 priority
 prison
@@ -2590,7 +2299,7 @@ probably
 problem
 procedure
 proceed
-process 1
+process
 produce
 producer
 product
@@ -2635,15 +2344,6 @@ publicly
 publish
 publishing
 pull
-pull apart
-pull down
-pull in
-pull off
-pull out
-pull over
-pull through
-pull together
-pull up
 punch
 punish
 punishment
@@ -2655,21 +2355,7 @@ purple
 purpose
 pursue
 push
-push about
-push forward
 put
-put away
-put back
-put down
-put forward
-put in
-put off
-put on
-put out
-put through
-put together
-put up
-put up with
 qualification
 qualified
 qualify
@@ -2702,15 +2388,12 @@ rarely
 rate
 rather
 raw
-re-
 reach
 react
 reaction
 read
 reader
 reading
-read out
-read over
 ready
 real
 realistic
@@ -2728,7 +2411,6 @@ recent
 recently
 reception
 reckon
-reckon on
 recognition
 recognize
 recommend
@@ -2740,12 +2422,11 @@ reduce
 reduction
 refer
 reference
-refer to
 reflect
 reform
 refrigerator
 refusal
-refuse 1
+refuse
 regard
 regarding
 region
@@ -2758,7 +2439,6 @@ regulation
 reject
 relate
 related
-relate to
 relation
 relationship
 relative
@@ -2772,7 +2452,6 @@ relief
 religion
 religious
 rely
-rely on
 remain
 remaining
 remains
@@ -2781,7 +2460,6 @@ remarkable
 remarkably
 remember
 remind
-remind of
 remote
 removal
 remove
@@ -2810,7 +2488,6 @@ resist
 resistance
 resolve
 resort
-resort to
 resource
 respect
 respond
@@ -2824,7 +2501,6 @@ restrict
 restricted
 restriction
 result
-result in
 retain
 retire
 retired
@@ -2847,9 +2523,7 @@ ridiculous
 riding
 right
 rightly
-ring 1
-ring 2
-ring back
+ring
 rise
 risk
 rival
@@ -2870,7 +2544,7 @@ round
 rounded
 route
 routine
-row 1
+row
 royal
 rub
 rubber
@@ -2880,17 +2554,11 @@ rudely
 ruin
 ruined
 rule
-rule out
 ruler
 rumour
 run
-run after
-run away
 runner
 running
-run out
-run over
-run through
 rural
 rush
 sack
@@ -2923,7 +2591,6 @@ say
 scale
 scare
 scared
-scare off
 scene
 schedule
 scheme
@@ -2939,11 +2606,10 @@ screen
 screw
 sea
 seal
-seal off
 search
 season
 seat
-second 1
+second
 secondary
 secret
 secretary
@@ -2953,7 +2619,6 @@ sector
 secure
 security
 see
-see about
 seed
 seek
 seem
@@ -2961,15 +2626,10 @@ see to
 select
 selection
 self
-self-
 sell
-sell off
-sell out
 senate
 senator
 send
-send for
-send off
 senior
 sense
 sensible
@@ -2988,11 +2648,7 @@ serve
 service
 session
 set
-set off
-set out
 settle
-settle down
-set up
 seven
 seventeen
 seventh
@@ -3034,7 +2690,6 @@ shocked
 shocking
 shoe
 shoot
-shoot down
 shooting
 shop
 shopping
@@ -3046,14 +2701,7 @@ shoulder
 shout
 show
 shower
-show off
-show round
-show up
 shut
-shut down
-shut in
-shut out
-shut up
 shy
 sick
 side
@@ -3084,7 +2732,6 @@ sink
 sir
 sister
 sit
-sit down
 site
 situation
 six
@@ -3121,7 +2768,6 @@ smooth
 smoothly
 snake
 snow
-so
 soap
 social
 socially
@@ -3149,7 +2795,6 @@ soon
 sore
 sorry
 sort
-sort out
 soul
 sound
 soup
@@ -3161,8 +2806,6 @@ space
 spare
 speak
 speaker
-speak out
-speak up
 special
 specialist
 specially
@@ -3170,7 +2813,6 @@ specific
 specifically
 speech
 speed
-speed up
 spell
 spelling
 spend
@@ -3182,7 +2824,6 @@ spirit
 spiritual
 spite
 split
-split up
 spoil
 spoken
 spoon
@@ -3190,7 +2831,6 @@ sport
 spot
 spray
 spread
-spread out
 spring
 square
 squeeze
@@ -3201,26 +2841,15 @@ stair
 stamp
 stand
 standard
-stand back
-stand by
-stand for
-stand out
-stand up
-stand up for
 star
 stare
 start
-start off
-start out
-start up
 state
 statement
 station
 statue
 status
 stay
-stay away
-stay out of
 steadily
 steady
 steal
@@ -3231,9 +2860,6 @@ steeply
 steer
 step
 stick
-stick out
-stick to
-stick up
 sticky
 stiff
 stiffly
@@ -3306,7 +2932,6 @@ suited
 sum
 summary
 summer
-sum up
 sun
 Sunday
 superior
@@ -3342,10 +2967,8 @@ swell
 swelling
 swim
 swimming
-swimming pool
 swing
 switch
-switch off
 swollen
 symbol
 sympathetic
@@ -3356,14 +2979,6 @@ tablet
 tackle
 tail
 take
-take away
-take back
-take down
-take in
-take off
-take on
-take over
-take up
 talk
 tall
 tank
@@ -3379,8 +2994,7 @@ teach
 teacher
 teaching
 team
-tear 1
-tear 2
+tear
 tear up
 technical
 technique
@@ -3388,7 +3002,6 @@ technology
 telephone
 television
 tell
-tell off
 temperature
 temporarily
 temporary
@@ -3406,7 +3019,6 @@ text
 than
 thank
 thanks
-thank you
 that
 the
 theatre
@@ -3427,12 +3039,7 @@ thief
 thin
 thing
 think
-think about
 thinking
-think of
-think of as
-think over
-think up
 third
 thirsty
 thirteen
@@ -3455,15 +3062,12 @@ throat
 through
 throughout
 throw
-throw away
-throw out
 thumb
 Thursday
 thus
 ticket
 tidy
 tie
-tie up
 tight
 tightly
 till
@@ -3472,10 +3076,8 @@ timetable
 tin
 tiny
 tip
-tip over
 tire
 tired
-tire out
 tiring
 title
 to
@@ -3543,24 +3145,11 @@ truly
 trust
 truth
 try
-try on
-try out
 tube
 Tuesday
 tune
 tunnel
 turn
-turn back
-turn down
-turn into
-turn off
-turn on
-turn out
-turn over
-turn round
-turn to
-turn up
-TV
 twelfth
 twelve
 twentieth
@@ -3574,8 +3163,6 @@ type
 typical
 typically
 tyre
-the unemployed
-the unexpected
 ugly
 ultimate
 ultimately
@@ -3637,22 +3224,17 @@ upon
 upper
 upset
 upsetting
-upside down
 upstairs
 upward
 upwards
 urban
 urge
 urgent
-us
 use
-used 1
-used 2
-used to
+used
 useful
 useless
 user
-use up
 usual
 usually
 vacation
@@ -3700,8 +3282,6 @@ waiter
 wake
 walk
 walking
-walk out
-walk up
 wall
 wallet
 wander
@@ -3709,19 +3289,12 @@ want
 war
 warm
 warmth
-warm up
 warn
 warning
 wash
-wash away
 washing
-wash off
-wash out
-wash up
 waste
 watch
-watch out
-watch out for
 water
 wave
 way
@@ -3731,9 +3304,6 @@ weakness
 wealth
 weapon
 wear
-wear away
-wear off
-wear out
 weather
 web
 website
@@ -3746,7 +3316,6 @@ weigh
 weight
 welcome
 well
-well known
 west
 western
 wet
@@ -3781,8 +3350,7 @@ willing
 willingly
 willingness
 win
-wind 1
-wind 2
+wind
 window
 wine
 wing
@@ -3807,7 +3375,6 @@ word
 work
 worker
 working
-work out
 world
 worried
 worry
@@ -3823,8 +3390,6 @@ wrap
 wrapping
 wrist
 write
-write back
-write down
 writer
 writing
 written
