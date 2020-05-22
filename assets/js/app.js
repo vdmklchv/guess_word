@@ -45,7 +45,6 @@ startButton.addEventListener('click', () => {
     definition.innerText = 'Definition will appear here after round end.';
     alphabetEnable(alphabetLetters);
     select.disabled = true;
-    chosenWord.style.fontSize = '80px';
     const wordLength = document.querySelector('#length').value;
     const gameArray = defineGameArray(wordLength); //defining array for current round
     word = chooseRandomWord(gameArray).toLowerCase(); //generating word to guess in current round
