@@ -19,6 +19,94 @@ let round = 0;
 let word = '';
 let letterarray = [];
 
+
+/* game mechanics */
+
+alphabetDraw(alphabet); //draw alphabet buttons 
+
+/* checking pressed keyboard keys and registering correct letter */
+window.addEventListener('keyup', (event) => {
+    document.querySelector(`#b${String.fromCharCode(event.keyCode).toLowerCase()}`).click();
+})
+
+/* ability to start game with spacebar */
+window.addEventListener('keyup', (event) => {
+    if (event.keyCode === 32)   {
+        startButton.click();
+    }
+})
+
+/* get all letters and toggle them to disabled before the round starts */
+const alphabetLetters = document.querySelectorAll('.alphabet-letter');
+alphabetDisable(alphabetLetters);
+/* input letter with mouse */
+
+startButton.addEventListener('click', () => {
+    definition.innerText = 'Definition will appear here after round end.';
+    alphabetEnable(alphabetLetters);
+    select.disabled = true;
+    chosenWord.style.fontSize = '80px';
+    const wordLength = document.querySelector('#length').value;
+    const gameArray = defineGameArray(wordLength); //defining array for current round
+    word = chooseRandomWord(gameArray).toLowerCase(); //generating word to guess in current round
+    generateAsterisks(word);//generate asterisks in needed number 
+    errorLetterArray = [];
+    letterArray = word.split(''); //make array of word letters
+    incorrectLetterGroup.innerText = '';
+    livesNumberSpan.innerText = 5;
+    startButton.disabled = true;
+    round += 1; //increase round number;
+    roundNumberSpan.innerText = round; //print round number on page
+    resultMessage.innerText = 'Make a guess (letters from a to z):';
+    resultMessage.style.color = 'black';
+})
+
+alphabetSection.addEventListener('click', (event) => {
+    if (checkIfLetterCorrect(event.target.innerText, word)) {
+        event.target.disabled = true;
+        /*event.target.classList.add('nohover');*/
+        resultMessage.innerText = 'Congratulations! The letter is correct. Input another letter:';
+        resultMessage.style.color = 'green';
+        const letterIndices = findAllIndices(letterArray, event.target.innerText); // find array of indices of correctly guessed letter
+        revealGuessedLetters(letterIndices, event.target.innerText);
+        if (!chosenWord.innerText.split('').includes('*'))   {
+            startButton.disabled = false;
+            wonGamesCount += 1;
+            wonGames.innerText = wonGamesCount;
+            resultMessage.innerText = 'Game won! Press New Game button to start next round.';
+            alphabetDisable(alphabetLetters);
+            percent.innerText = `${calculateWinRate(wonGamesCount, lostGamesCount)}`;
+            revealWordDefinition(word);
+            select.disabled = false;
+        }
+    }
+    else  {
+        livesNumber = +livesNumberSpan.innerText - 1;
+        livesNumberSpan.innerText = livesNumber;
+        errorLetterArray.push(event.target.innerText);
+        event.target.disabled = true;
+
+        if (livesNumber > 0) {
+            resultMessage.innerText = 'Sorry. No such letter. Try again:';
+            resultMessage.style.color = 'red';
+            incorrectLetterGroup.innerText = errorLetterArray.join(' ');
+        } 
+        if (livesNumber === 0) {
+            incorrectLetterGroup.innerText = errorLetterArray.join(' ');
+            resultMessage.innerText = 'Game Over. You have lost. Start the next round.';
+            alphabetDisable(alphabetLetters);
+            revealWordDefinition(word);
+            select.disabled = false;
+            resultMessage.style.color = 'red';
+            chosenWord.innerText = word;
+            lostGamesCount += 1;
+            percent.innerText = `${calculateWinRate(wonGamesCount, lostGamesCount)}`;
+            lostGames.innerText = lostGamesCount;
+            startButton.disabled = false;
+        }
+    }   
+})
+
 /* calculate winning rate */
 function calculateWinRate(winNumber,lostNumber)  {
     return Number.parseFloat(winNumber/(winNumber + lostNumber)).toFixed(3)
@@ -169,93 +257,3 @@ function checkIfLetterCorrect(letter, text) {
    }
    return false;
 }  
-
-/* game mechanics */
-
-alphabetDraw(alphabet); //draw alphabet buttons 
-
-/* checking pressed keyboard keys and registering correct letter */
-window.addEventListener('keyup', (event) => {
-    document.querySelector(`#b${String.fromCharCode(event.keyCode).toLowerCase()}`).click();
-})
-
-/* ability to start game with spacebar */
-window.addEventListener('keyup', (event) => {
-    if (event.keyCode === 32)   {
-        startButton.click();
-    }
-})
-
-/* get all letters and toggle them to disabled before the round starts */
-const alphabetLetters = document.querySelectorAll('.alphabet-letter');
-alphabetDisable(alphabetLetters);
-/* input letter with mouse */
-
-startButton.addEventListener('click', () => {
-    definition.innerText = 'Definition will appear here after round end.';
-    alphabetEnable(alphabetLetters);
-    select.disabled = true;
-    chosenWord.style.fontSize = '80px';
-    const wordLength = document.querySelector('#length').value;
-    const gameArray = defineGameArray(wordLength); //defining array for current round
-    word = chooseRandomWord(gameArray).toLowerCase(); //generating word to guess in current round
-    generateAsterisks(word);//generate asterisks in needed number 
-    errorLetterArray = [];
-    letterArray = word.split(''); //make array of word letters
-    incorrectLetterGroup.innerText = '';
-    livesNumberSpan.innerText = 5;
-    startButton.disabled = true;
-    round += 1; //increase round number;
-    roundNumberSpan.innerText = round; //print round number on page
-    resultMessage.innerText = 'Make a guess (letters from a to z):';
-    resultMessage.style.color = 'black';
-})
-
-alphabetSection.addEventListener('click', (event) => {
-    if (checkIfLetterCorrect(event.target.innerText, word)) {
-        event.target.disabled = true;
-        /*event.target.classList.add('nohover');*/
-        resultMessage.innerText = 'Congratulations! The letter is correct. Input another letter:';
-        resultMessage.style.color = 'green';
-        const letterIndices = findAllIndices(letterArray, event.target.innerText); // find array of indices of correctly guessed letter
-        revealGuessedLetters(letterIndices, event.target.innerText);
-        if (!chosenWord.innerText.split('').includes('*'))   {
-            startButton.disabled = false;
-            wonGamesCount += 1;
-            wonGames.innerText = wonGamesCount;
-            resultMessage.innerText = 'Game won! Press New Game button to start next round.';
-            alphabetDisable(alphabetLetters);
-            percent.innerText = `${calculateWinRate(wonGamesCount, lostGamesCount)}`;
-            revealWordDefinition(word);
-            select.disabled = false;
-        }
-    }
-    else  {
-        livesNumber = +livesNumberSpan.innerText - 1;
-        livesNumberSpan.innerText = livesNumber;
-        errorLetterArray.push(event.target.innerText);
-        event.target.disabled = true;
-
-        if (livesNumber > 0) {
-            resultMessage.innerText = 'Sorry. No such letter. Try again:';
-            resultMessage.style.color = 'red';
-            incorrectLetterGroup.innerText = errorLetterArray.join(' ');
-        } 
-        if (livesNumber === 0) {
-            incorrectLetterGroup.innerText = errorLetterArray.join(' ');
-            resultMessage.innerText = 'Game Over. You have lost. Start the next round.';
-            alphabetDisable(alphabetLetters);
-            revealWordDefinition(word);
-            select.disabled = false;
-            resultMessage.style.color = 'red';
-            chosenWord.innerText = word;
-            lostGamesCount += 1;
-            percent.innerText = `${calculateWinRate(wonGamesCount, lostGamesCount)}`;
-            lostGames.innerText = lostGamesCount;
-            startButton.disabled = false;
-        }
-    }   
-})
-
-
-     

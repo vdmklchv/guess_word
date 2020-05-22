@@ -74,14 +74,14 @@ header  h1 {
 }
 
 #chosen-word    {
-    min-width: 800px;
+    min-width: 250px;
     margin: 0 auto;
-
-    min-height: 110px;
+    padding: 0 10px;
+    min-height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 30px;
+    font-size: 3vw;
     border: 3px gray solid;
     box-shadow: 3px 3px 10px gray;
     margin-bottom: 20px;
