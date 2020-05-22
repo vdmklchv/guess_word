@@ -259,4 +259,8 @@ header  h1 {
         text-align: center;
         justify-content: space-between;
     }
+
+    #result-message {
+        min-height: 60px;
+    }
 }
