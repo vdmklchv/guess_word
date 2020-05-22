@@ -106,7 +106,8 @@ header  h1 {
 #alphabet   {
     display: flex;
     justify-content: flex-start;
-    max-width: 100%;
+    max-width: 80%;
+    margin: 0 auto;
     flex-wrap: wrap;
     align-items: center;
 }
@@ -120,7 +121,6 @@ header  h1 {
     background-color: #442E6B;
     color: white;
     text-align: center;
-    margin-right: 10px;
     margin-bottom: 10px;
 }
 
@@ -131,21 +131,13 @@ header  h1 {
     width: 100%;
 }
 
-#letter-input   {
-    border: 1px gray solid;
-    min-width: 100px;
-    border-radius: 5px;
-    min-height: 40px;
-    font-size: 20px;
-    padding: 20px 10px;
-}
-
 #incorrect-letters  {
     display: flex;
     align-items: center;
     margin-left: 100px;
     font-size: 20px;
     flex-grow: 1;
+    width: 100%;
 }
 
 #word-length    {
@@ -187,3 +179,80 @@ header  h1 {
     width: 200px;
 }
 
+@media (max-width: 600px)    {
+
+    header h1 {
+        font-size: 20px;
+    }
+    #start-game-block   {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #chosen-word   {
+        height: 25px;
+        font-size: 15px;
+        text-align: center;
+        padding: 0 5px;
+    }
+    #chosen-word, #definition, #start-game-block    {
+        margin-bottom: 10px;
+    }
+
+    #start  {
+        font-size: 15px;
+        padding: 5px;
+    }
+
+    #word-length {
+        width: 100%;
+    }
+
+    #user-lives, #round, #stats {
+        font-size: 12px;
+    }
+
+    #alphabet   {
+        justify-content: space-between;
+    }
+
+    .alphabet-letter   {
+        font-size: 12px;
+        min-width: 40px;
+        min-height: 30px;
+    }
+
+    #incorrect-letters  {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+    }
+
+    #incorrect-letter-group {
+        display: flex;
+        align-items: center;
+        min-height: 70px;
+        font-size: 30px;
+        margin-left: 30px;
+        border: 5px solid #442E6B;
+        border-radius: 5px;
+        padding: 10px 10px;
+    }
+
+    #word-length, #definition, #result-message    {
+        min-height: 30px;
+        font-size: 15px;
+    }
+    
+    #word-length select {
+        font-size: 15px;
+        margin-left: 30px;
+    }
+
+    #stats  {
+        display: flex;
+        text-align: center;
+        justify-content: space-between;
+    }
+}
