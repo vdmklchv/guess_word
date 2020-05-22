@@ -143,15 +143,17 @@ function checkValidLetter(letter)   {
 }
 
 /* alphabetLetters toggle */
-function alphabetToggle(array)  {
+function alphabetDisable(array)  {
     for (let i of array)    {
-        if (i.disabled === true)    {
-            i.disabled = false;
-            i.classList.remove('nohover');
-        } else {
-            i.disabled = true;
-            i.classList.add('nohover');
-        }
+        i.disabled = true;
+        i.classList.add = 'nohover';
+    }
+}
+
+function alphabetEnable(array) {
+    for (let i of array)    {
+        i.disabled = false;
+        i.classList.remove = 'nohover';
     }
 }
 
@@ -186,17 +188,12 @@ window.addEventListener('keyup', (event) => {
 
 /* get all letters and toggle them to disabled before the round starts */
 const alphabetLetters = document.querySelectorAll('.alphabet-letter');
-alphabetToggle(alphabetLetters);
-
+alphabetDisable(alphabetLetters);
 /* input letter with mouse */
 
 startButton.addEventListener('click', () => {
-    for (let i of alphabetLetters)  {
-        i.classList.remove('nohover');
-        i.disabled = true;
-    }
     definition.innerText = 'Definition will appear here after round end.';
-    alphabetToggle(alphabetLetters);
+    alphabetEnable(alphabetLetters);
     select.disabled = true;
     chosenWord.style.fontSize = '80px';
     const wordLength = document.querySelector('#length').value;
@@ -217,7 +214,7 @@ startButton.addEventListener('click', () => {
 alphabetSection.addEventListener('click', (event) => {
     if (checkIfLetterCorrect(event.target.innerText, word)) {
         event.target.disabled = true;
-        event.target.classList.add('nohover');
+        /*event.target.classList.add('nohover');*/
         resultMessage.innerText = 'Congratulations! The letter is correct. Input another letter:';
         resultMessage.style.color = 'green';
         const letterIndices = findAllIndices(letterArray, event.target.innerText); // find array of indices of correctly guessed letter
@@ -227,6 +224,7 @@ alphabetSection.addEventListener('click', (event) => {
             wonGamesCount += 1;
             wonGames.innerText = wonGamesCount;
             resultMessage.innerText = 'Game won! Press New Game button to start next round.';
+            alphabetDisable(alphabetLetters);
             percent.innerText = `${calculateWinRate(wonGamesCount, lostGamesCount)}`;
             revealWordDefinition(word);
             select.disabled = false;
@@ -236,6 +234,7 @@ alphabetSection.addEventListener('click', (event) => {
         livesNumber = +livesNumberSpan.innerText - 1;
         livesNumberSpan.innerText = livesNumber;
         errorLetterArray.push(event.target.innerText);
+        event.target.disabled = true;
 
         if (livesNumber > 0) {
             resultMessage.innerText = 'Sorry. No such letter. Try again:';
@@ -244,7 +243,8 @@ alphabetSection.addEventListener('click', (event) => {
         } 
         if (livesNumber === 0) {
             incorrectLetterGroup.innerText = errorLetterArray.join(' ');
-            resultMessage.innerText = 'Game Over. You have lost. Start the next round.'
+            resultMessage.innerText = 'Game Over. You have lost. Start the next round.';
+            alphabetDisable(alphabetLetters);
             revealWordDefinition(word);
             select.disabled = false;
             resultMessage.style.color = 'red';
