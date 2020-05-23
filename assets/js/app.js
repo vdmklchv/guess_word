@@ -40,8 +40,6 @@ gameMode.addEventListener('change', () => {
         lostGamesDiv.style.display = "none";
         winRateDiv.style.display = "none";
         guessedWords.style.display = "block";
-        livesNumber = 100;
-        livesNumberSpan.innerText = '100';
         incorrectLetterSection.style.display = "none";
         roundSection.style.display = "none";
         difficulty.disabled = true;
@@ -91,10 +89,13 @@ startButton.addEventListener('click', () => {
         roundNumberSpan.innerText = round; //print round number on page
         gamePrepare();
     } else if (gameMode.value === 'maxwords')   {
+        guessedWordCount = 0;
         disableInterface();
         gamePrepare();
         alphabetEnable(alphabetLetters);
         guessedWordsSpan.innerText = guessedWordCount;
+        livesNumber = 100;
+        livesNumberSpan.innerText = livesNumber;
     }
 })
 
@@ -133,18 +134,26 @@ alphabetSection.addEventListener('click', (event) => {
                 event.target.disabled = true;
                 revealCorrect();
                 if (!chosenWord.innerText.split('').includes('*'))   {
-                    onGameWon(); 
+                    onGameWon();
+                    startButton.disabled = true;
                     guessedWordCount += 1;
                     guessedWordsSpan.innerText = guessedWordCount;
+                    resultMessage.innerText = '';
+                    setTimeout(() => {
+                       gamePrepare();
+                       alphabetEnable(alphabetLetters);
+                    }, 3000);
                 }
             } else {
+                livesNumber = +livesNumberSpan.innerText - 1;
                 if (livesNumber > 0) {
-                    livesNumber = +livesNumberSpan.innerText - 1;
                     livesNumberSpan.innerText = livesNumber;
                     event.target.disabled = true;
                     messageIncorrect();
                 } else {
+                    livesNumberSpan.innerText = livesNumber;
                     onGameLost();
+                    difficulty.disabled = true;
                 }    
             }
         }
