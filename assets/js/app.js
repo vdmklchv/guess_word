@@ -27,6 +27,7 @@ let livesNumber;
 let round = 0;
 let word = '';
 let letterarray = [];
+let guessedWordCount = 0;
 
 
 /* game mechanics */
@@ -43,13 +44,15 @@ gameMode.addEventListener('change', () => {
         livesNumberSpan.innerText = '100';
         incorrectLetterSection.style.display = "none";
         roundSection.style.display = "none";
+        difficulty.disabled = true;
     } else if (gameMode.value === 'infinite')   {
         wonGamesDiv.style.display = "block";
         lostGamesDiv.style.display = "block";
         winRateDiv.style.display = "block";
         guessedWords.style.display = "none";
         incorrectLetterSection.style.display = "block";
-        roundSection.style.display = "block";       
+        roundSection.style.display = "block";   
+        difficulty.disabled = false;    
     }
 })
 
@@ -91,8 +94,91 @@ startButton.addEventListener('click', () => {
         disableInterface();
         gamePrepare();
         alphabetEnable(alphabetLetters);
+        guessedWordsSpan.innerText = guessedWordCount;
     }
 })
+
+alphabetSection.addEventListener('click', (event) => {
+    if (gameMode.value === 'infinite') {
+        if (checkIfLetterCorrect(event.target.innerText, word)) {
+            event.target.disabled = true;
+            revealCorrect();
+            if (!chosenWord.innerText.split('').includes('*'))   {
+                onGameWon(); 
+                wonGamesCount += 1;
+                wonGames.innerText = wonGamesCount;
+                percent.innerText = `${calculateWinRate(wonGamesCount, lostGamesCount)}`;
+            }
+        }
+        else  {
+            livesNumber = +livesNumberSpan.innerText - 1;
+            livesNumberSpan.innerText = livesNumber;
+            errorLetterArray.push(event.target.innerText);
+            event.target.disabled = true;
+
+            if (livesNumber > 0) {
+                incorrectLetterGroup.innerText = errorLetterArray.join(' ');
+                messageIncorrect();
+            } 
+            if (livesNumber === 0) {
+                onGameLost();
+                incorrectLetterGroup.innerText = errorLetterArray.join(' ');
+                lostGamesCount += 1;
+                percent.innerText = `${calculateWinRate(wonGamesCount, lostGamesCount)}`;
+                lostGames.innerText = lostGamesCount;
+            }
+        } 
+    } else if (gameMode.value === 'maxwords')   {
+            if (checkIfLetterCorrect(event.target.innerText, word)) {
+                event.target.disabled = true;
+                revealCorrect();
+                if (!chosenWord.innerText.split('').includes('*'))   {
+                    onGameWon(); 
+                    guessedWordCount += 1;
+                    guessedWordsSpan.innerText = guessedWordCount;
+                }
+            } else {
+                if (livesNumber > 0) {
+                    livesNumber = +livesNumberSpan.innerText - 1;
+                    livesNumberSpan.innerText = livesNumber;
+                    event.target.disabled = true;
+                    messageIncorrect();
+                } else {
+                    onGameLost();
+                }    
+            }
+        }
+})
+
+/* game won mechanics */
+function onGameWon()    {
+    enableInterface();
+    resultMessage.innerText = 'Game won! Press New Game button to start next round.';
+    alphabetDisable(alphabetLetters);
+    revealWordDefinition(word);
+}
+
+function onGameLost() {
+    enableInterface();
+    resultMessage.innerText = 'Game Over. You have lost. Start the next round.';
+    alphabetDisable(alphabetLetters);
+    revealWordDefinition(word);
+    resultMessage.style.color = 'red';
+    chosenWord.innerText = word;
+}
+
+/* correct letter guess mechanics */
+function revealCorrect()   {
+        resultMessage.innerText = 'Congratulations! The letter is correct. Input another letter:';
+        resultMessage.style.color = 'green';
+        const letterIndices = findAllIndices(letterArray, event.target.innerText); // find array of indices of correctly guessed letter
+        revealGuessedLetters(letterIndices, event.target.innerText);
+}
+
+function messageIncorrect()   {
+    resultMessage.innerText = 'Sorry. No such letter. Try again:';
+    resultMessage.style.color = 'red';
+}
 
 /* generating word */
 function generateWord() {
@@ -111,53 +197,6 @@ function gamePrepare()  {
     definition.innerText = 'Definition will appear here after round end.';
 }
 
-alphabetSection.addEventListener('click', (event) => {
-    if (gameMode.value === 'infinite') {
-        if (checkIfLetterCorrect(event.target.innerText, word)) {
-            event.target.disabled = true;
-            /*event.target.classList.add('nohover');*/
-            resultMessage.innerText = 'Congratulations! The letter is correct. Input another letter:';
-            resultMessage.style.color = 'green';
-            const letterIndices = findAllIndices(letterArray, event.target.innerText); // find array of indices of correctly guessed letter
-            revealGuessedLetters(letterIndices, event.target.innerText);
-            if (!chosenWord.innerText.split('').includes('*'))   {
-                enableInterface();
-                wonGamesCount += 1;
-                wonGames.innerText = wonGamesCount;
-                resultMessage.innerText = 'Game won! Press New Game button to start next round.';
-                alphabetDisable(alphabetLetters);
-                percent.innerText = `${calculateWinRate(wonGamesCount, lostGamesCount)}`;
-                revealWordDefinition(word);
-            }
-        }
-        else  {
-            livesNumber = +livesNumberSpan.innerText - 1;
-            livesNumberSpan.innerText = livesNumber;
-            errorLetterArray.push(event.target.innerText);
-            event.target.disabled = true;
-
-            if (livesNumber > 0) {
-                resultMessage.innerText = 'Sorry. No such letter. Try again:';
-                resultMessage.style.color = 'red';
-                incorrectLetterGroup.innerText = errorLetterArray.join(' ');
-            } 
-            if (livesNumber === 0) {
-                incorrectLetterGroup.innerText = errorLetterArray.join(' ');
-                enableInterface();
-                resultMessage.innerText = 'Game Over. You have lost. Start the next round.';
-                alphabetDisable(alphabetLetters);
-                revealWordDefinition(word);
-                resultMessage.style.color = 'red';
-                chosenWord.innerText = word;
-                lostGamesCount += 1;
-                percent.innerText = `${calculateWinRate(wonGamesCount, lostGamesCount)}`;
-                lostGames.innerText = lostGamesCount;
-            }
-        } 
-    } else if (gameMode.value === 'maxwords')   {
-
-    }  
-})
 /* disable interface during game */
 function disableInterface() {
     gameMode.disabled = true;
