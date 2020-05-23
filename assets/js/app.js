@@ -134,7 +134,6 @@ alphabetSection.addEventListener('click', (event) => {
                 event.target.disabled = true;
                 revealCorrect();
                 if (!chosenWord.innerText.split('').includes('*'))   {
-                    onGameWon();
                     startButton.disabled = true;
                     guessedWordCount += 1;
                     guessedWordsSpan.innerText = guessedWordCount;
