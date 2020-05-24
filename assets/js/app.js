@@ -44,6 +44,14 @@ toggleSettings.addEventListener('click', () => {
     }
 })
 
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 1000)   {
+        settingsBlock.style.display = 'flex';
+    } else if (window.innerWidth < 1000)    {
+        settingsBlock.style.display = 'none';
+    }
+})
+
 gameMode.addEventListener('change', () => {
     if (gameMode.value === 'maxwords')  {
         wonGamesDiv.style.display = "none";
