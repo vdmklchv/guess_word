@@ -20,6 +20,8 @@ const gameMode = document.querySelector('#game-mode');
 const guessedWords = document.querySelector('#words-number');
 const guessedWordsSpan = document.querySelector('#guessed-words');
 const roundSection = document.querySelector('#round');
+const toggleSettings = document.querySelector('#togglesettings');
+const settingsBlock = document.querySelector('#settings-block');
 
 let wonGamesCount = 0;
 let lostGamesCount = 0;
@@ -33,6 +35,14 @@ let guessedWordCount = 0;
 /* game mechanics */
 
 /* choose game mode */
+
+toggleSettings.addEventListener('click', () => {
+    if (window.getComputedStyle(settingsBlock).display === 'block')    {
+        settingsBlock.style.display = 'none';
+    } else {
+        settingsBlock.style.display = 'block';
+    }
+})
 
 gameMode.addEventListener('change', () => {
     if (gameMode.value === 'maxwords')  {

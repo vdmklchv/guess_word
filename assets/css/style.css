@@ -73,6 +73,12 @@ header  h1 {
     padding: 20px 0;
 }
 
+#settings-icon  {
+    width: 200px;
+    height: 200px;
+    display: none;
+}
+
 #chosen-word    {
     min-width: 250px;
     margin: 0 auto;
@@ -168,33 +174,96 @@ header  h1 {
     padding: 10px 10px;
 }
 
-#start-game-block   {
+#settings-block   {
     display: flex;
     justify-content: space-between;
     width: 100%;
     margin-bottom: 20px;
 }
 
+#startbutton    {
+    width: 100%;
+}
+
 #start  {
+    display: block;
     width: 200px;
     margin-bottom: 20px;
 }
 
 @media (max-width: 1000px) and (min-width: 601px)   {
-    #start-game-block   {
+    #settings-block  {
+        display: none;
         flex-direction: column;
         align-items: flex-start;
     }
+
     #word-length, #difficulty, #mode   {
         justify-content: space-between;
         margin-bottom: 10px;
-}
+    }
+    #alphabet   {
+        justify-content: space-between;
+    }
+
+    .alphabet-letter   {
+        font-size: 17px;
+        min-width: 50px;
+        min-height: 35px;
+    }
+
+    #settings-icon  {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 95px;
+        text-align: right;
+    }
+
+    #settings-icon img  {
+        width: 30px;
+        height: 30px;
+    }
+
+    #settings-icon img:hover    {
+        cursor: pointer;
+        opacity: 0.7;
+    }
 }
 
 @media (max-width: 601px)    {
-    #start-game-block   {
+
+    #settings-icon  {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 95px;
+        text-align: right;
+    }
+
+    #settings-icon img  {
+        width: 30px;
+        height: 30px;
+    }
+
+    #settings-icon img:hover    {
+        cursor: pointer;
+        opacity: 0.7;
+    }
+
+    #settings-block   {
+        padding: 0 50px;
         flex-direction: column;
         align-items: center;
+        padding-top: 50vw;
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        width: 100%;
+        height: 100%;
     }
     #word-length, #difficulty, #mode   {
         justify-content: space-between;
@@ -213,7 +282,7 @@ header  h1 {
         padding: 0 5px;
     }
 
-    #chosen-word, #definition, #start-game-block   {
+    #chosen-word, #definition, #settings-block   {
         margin-bottom: 10px;
     }
 

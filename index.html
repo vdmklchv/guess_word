@@ -13,36 +13,43 @@
     </header>
 
     <main id="main-content">
-        <div id="start-game-block">
+        <div id="startbutton">
             <button id="start">New Game (Space)</button>
+        </div>
+        <section id="settings-block">
             <div id="word-length">
-                <p>Word length:</p>
-                <select name="length" id="length">
-                    <option value="random">random</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
+                    <p>Word length:</p>
+                    <select name="length" id="length">
+                        <option value="random">random</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
             </div>
             <div id="difficulty">
-                <p>Difficulty:</p>
-                <select name="difficulty-level" id="difficulty-level">
-                    <option value="easy">Easy (7 lives)</option>
-                    <option value="medium">Medium (5 lives)</option>
-                    <option value="hard">Hard (3 lives)</option>
-                </select>
+                    <p>Difficulty:</p>
+                    <select name="difficulty-level" id="difficulty-level">
+                        <option value="easy">Easy (7 lives)</option>
+                        <option value="medium">Medium (5 lives)</option>
+                        <option value="hard">Hard (3 lives)</option>
+                    </select>
             </div>
             <div id="mode">
-                <p>Game mode:</p>
-                <select name="game-mode" id="game-mode">
-                    <option value="infinite">Infinite</option>
-                    <option value="maxwords">Max-Words</option>
-                </select>
+                    <p>Game mode:</p>
+                    <select name="game-mode" id="game-mode">
+                        <option value="infinite">Infinite</option>
+                        <option value="maxwords">Max-Words</option>
+                    </select>
             </div>
+        </section>
+        
+
+        <div id="settings-icon">
+            <img src="assets/images/settings.png" alt="settings icon" id="togglesettings">
         </div>
 
         <section id="user-lives">
