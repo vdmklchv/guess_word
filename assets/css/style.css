@@ -177,16 +177,33 @@ header  h1 {
 
 #start  {
     width: 200px;
+    margin-bottom: 20px;
 }
 
-@media (max-width: 600px)    {
+@media (max-width: 1000px) and (min-width: 601px)   {
+    #start-game-block   {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    #word-length, #difficulty, #mode   {
+        justify-content: space-between;
+        margin-bottom: 10px;
+}
+}
 
+@media (max-width: 601px)    {
+    #start-game-block   {
+        flex-direction: column;
+        align-items: center;
+    }
+    #word-length, #difficulty, #mode   {
+        justify-content: space-between;
+        margin-bottom: 10px;
+        width: 100%;
+}
+ 
     header h1 {
         font-size: 20px;
-    }
-    #start-game-block   {
-        flex-wrap: wrap;
-        justify-content: center;
     }
 
     #chosen-word   {
@@ -195,17 +212,9 @@ header  h1 {
         text-align: center;
         padding: 0 5px;
     }
-    #chosen-word, #definition, #start-game-block, #difficulty   {
+
+    #chosen-word, #definition, #start-game-block   {
         margin-bottom: 10px;
-    }
-
-    #start  {
-        font-size: 17px;
-        padding: 5px;
-    }
-
-    #word-length {
-        width: 100%;
     }
 
     #user-lives, #round, #stats {
@@ -244,20 +253,9 @@ header  h1 {
         padding: 10px 10px;
     }
 
-    #word-length, #definition, #result-message    {
+    #definition, #result-message    {
         min-height: 30px;
         font-size: 15px;
-    }
-    
-    #word-length select {
-        font-size: 15px;
-        margin-left: 30px;
-    }
-
-    #stats  {
-        display: flex;
-        text-align: center;
-        justify-content: space-between;
     }
 
     #result-message {
