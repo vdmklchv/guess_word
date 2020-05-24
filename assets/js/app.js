@@ -138,6 +138,7 @@ alphabetSection.addEventListener('click', (event) => {
                     guessedWordCount += 1;
                     guessedWordsSpan.innerText = guessedWordCount;
                     resultMessage.innerText = '';
+                    revealWordDefinition(word);
                     setTimeout(() => {
                        gamePrepare();
                        alphabetEnable(alphabetLetters);
