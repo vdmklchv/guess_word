@@ -239,6 +239,8 @@ header  h1 {
         right: 20px;
         top: 95px;
         text-align: right;
+        width: auto;
+        height: auto;
     }
 
     #settings-icon img  {
